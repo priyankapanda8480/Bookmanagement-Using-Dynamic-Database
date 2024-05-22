@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    {% include 'cdnlines.html' %}
+    <title></title>
+  </head>
+  <style media="screen">
+    .form-control{
+      margin-top:-10px;
+    }
+
+    form{
+      padding:10px;
+      box-shadow:0px 0px 10px red, 0px 0px 40px blue;
+      border-radius:30px;
+    }
+  </style>
+  <body>
+    <h1 class="text-center display-4 font-weight-bold">Please Update Book Details Here!!!!</h1>
+    <div class="container">
+      <div class="row">
+        <div class="offset-md-4 col-md-4">
+          <form method="post" action="{% url 'update_data' data.id %}">
+            {% csrf_token%}
+            <label>Book Name:</label>
+            <input type="text" name="bname" calss="form-control" value="{{ data.book_name}}">
+
+            <label>Author Name:</label>
+            <input type="text" name="authname" calss="form-control" value="{{ data.author_name}}">
+
+            <label>Book ID:</label>
+            <input type="text" name="bookid" calss="form-control" value="{{ data.book_id}}">
+
+            <label>Book Price:</label>
+            <input type="text" name="bookprice" calss="form-control" value="{{ data.book_price}}">
+            <div class="text-center">
+              <div class="text-center">
+              <input type="Submit"  value="Updates" class="btn btn-outline-success">
+              <input type="Reset"  value="Clear Data" class="btn btn-outline-danger"><br>
+              <a href="{% url 'mainpage' %}" class="btn btn-outline-primary mt-2">Go To Main Page</a>
+            </div>
+
+            </div>
+
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
